@@ -1,37 +1,32 @@
-## Welcome to GitHub Pages
+# Webpack ESI Include Plugin
+## How do I use it
+Below is an example of how to include and configure this plugin in webpack config.
+```javascript
+const EsiIncludeWebpackPlugin = require('@meltwater/esi-include-webpack-plugin');
 
-You can use the [editor on GitHub](https://github.com/meltwater/esi-replace-webpack-plugin/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+plugins: [
+    new EsiIncludeWebpackPlugin({
+        verbose: true,
+        esi: [{ name: 'placeholder', src: 'https://mydomain.com/thingToInclude.html', noStore: false, onError: 'continue', authorization: 'bearer tokendatablah' }]
+    })
+];
 ```
+verbose: optional - set to true to see additional console logging.
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+esi: array of esi objects
+  esiObjects: 
+    name: matches comment in html so it knows where to replace
+    src: source file to 'GET' to include in esi
+    noStore: set to true or false to set the 'no-store' esi 
+    onError: the esi onerror value
+    authorization: optional property to passed as the authorization header in the GET request when a file is fetched for dev. 
 
-### Jekyll Themes
+In HTML use the following snippet to mark the location of the ESI
+```html 
+<!--esi-include-webpack-plugin name=placeholder-->
+```
+The name property must match the name in the esi config object exactly.
+The spacing is important. At the moment having no spaces around the '=' and no spaces between the open and close comment markers is required exactly. Hopefully flexibility will be added in the future.
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/meltwater/esi-replace-webpack-plugin/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
 
-### Support or Contact
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
