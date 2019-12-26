@@ -99,9 +99,18 @@ class EsiIncludeWebpackPlugin {
       esiItem.onError = 'continue';
     }
 
+    let tag = `<!--esi <esi:include src="${esiItem.src}" no-store="${esiItem.noStore ? 'on' : 'off'}" onerror="${esiItem.onError}"`;
+    if(esiItem.ttl){
+      tag += ` ttl:"${esiItem.ttl}"`;
+    }
+    if(esiItem.maxwait) {
+      tag += ` maxwait="${esiItem.maxwait}"`;
+    }
+    tag += `></esi:include>-->`;
+
     return {
       searchString: `<!--esi-include-webpack-plugin name=${esiItem.name}-->`,
-      replaceString: `<!--esi <esi:include src="${esiItem.src}" no-store="${esiItem.noStore ? 'on' : 'off'}" onerror="${esiItem.onError}" ${esiItem.ttl ? `ttl:"${esiItem.ttl}"` : ''}></esi:include>-->`
+      replaceString: 
     };
   }
 

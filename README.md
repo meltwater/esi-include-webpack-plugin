@@ -24,7 +24,9 @@ esi: array of esi objects
     src: source file to 'GET' to include in esi
     noStore: set to true or false to set the 'no-store' esi 
     onError: the esi onerror value
-    authorization: optional property to passed as the authorization header in the GET request when a file is fetched for dev. 
+    ttl: optional property to set the ttl property on the esi:include tag
+    maxwait: optional property to set the maxwait property on the esi:include tag 
+    authorization: optional property to passed as the authorization header in the GET request when a file is fetched for dev.
 
 In HTML use the following snippet to mark the location of the ESI
 ```html 
