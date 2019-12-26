@@ -28,13 +28,21 @@ class EsiIncludeWebpackPlugin {
 
   }
 
+  logVerbose(msg) {
+    if(this.options.verbose) {
+      console.info(msg);
+    }
+  }
+
   async apply(compiler) {
 
     const isProductionMode = compiler.options.mode === 'production' || !compiler.options.mode;
+    
+    this.logVerbose(`${pluginName} detected production mode as ${isProductionMode}`);
 
     this.replacers = [];
     const promises = this.options.esi.map(async (esiItem) => {
-      if (!isProductionMode) {
+      if (isProductionMode) {
         this.replacers.push(this.buildEsiString(esiItem));
       } else {
         this.replacers.push(await this.buildFullFileInclude(esiItem));
@@ -44,10 +52,7 @@ class EsiIncludeWebpackPlugin {
 
     await Promise.all(promises);
 
-    if (this.options.verbose === true) {
-      console.log(this.replacers);
-    }
-
+    this.logVerbose(this.replacers);
 
     compiler.hooks.emit.tapAsync(pluginName, (compilation, callback) => {
 
@@ -56,10 +61,8 @@ class EsiIncludeWebpackPlugin {
         let bits = filename.split('.');
         if (bits[bits.length - 1] === 'html' || bits[bits.length - 1] === 'htm' || bits[bits.length - 1] === 'ejs') {
           // this is an html file so do the replacement
-          if (this.options.verbose === true) {
-            console.log(filename);
-            console.log(compilation.assets[filename]);
-          }
+          this.logVerbose(filename);
+          this.logVerbose(compilation.assets[filename]);
 
           let replacedHtml = this.replace(compilation.assets[filename].source());
 
@@ -117,9 +120,8 @@ class EsiIncludeWebpackPlugin {
     }
     let res = await fetch(uri, options);
     let text = await res.text();
-    if (this.options.verbose === true) {
-      console.log(`${res.status} - ${uri} - ${text}`);
-    }
+    this.logVerbose(`${res.status} - ${uri} - ${text}`)
+
     if (res.status !== 200) {
       console.error(`${pluginName} errored attempting to fetch ${uri}, returned with code ${res.status}`);
     }
