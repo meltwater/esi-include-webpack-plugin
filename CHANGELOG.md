@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/meltwater/esi-include-webpack-plugin/compare/v1.0.0...v1.0.1) (2019-12-26)
+
+
+### Bug Fixes
+
+* fixing prod logic and updating verbose logging ([719953c](https://github.com/meltwater/esi-include-webpack-plugin/commit/719953c024d9f21ae7ed1fe3de094fcc7d6647ea))
+
 # 1.0.0 (2019-12-26)
 
 
