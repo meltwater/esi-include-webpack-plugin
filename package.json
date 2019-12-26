@@ -12,11 +12,16 @@
   },
   "keywords": [
     "webpack",
+    "plugin",
+    "webpackplugin",
     "esi",
     "include",
     "replace",
     "html",
-    "inject"
+    "inject",
+    "local",
+    "dev",
+    "render"
   ],
   "author": "Team Cosmos - Meltwater",
   "license": "MIT",
