@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/meltwater/esi-include-webpack-plugin/compare/v1.0.1...v1.0.2) (2019-12-26)
+
+
+### Bug Fixes
+
+* adding maxwait as a property on the esi config ([69d405d](https://github.com/meltwater/esi-include-webpack-plugin/commit/69d405d714d7590dda978df1b626f37f3fc3da54))
+
 ## [1.0.1](https://github.com/meltwater/esi-include-webpack-plugin/compare/v1.0.0...v1.0.1) (2019-12-26)
 
 

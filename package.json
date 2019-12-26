@@ -1,6 +1,6 @@
 {
   "name": "@meltwater/esi-include-webpack-plugin",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Webpack plugin to inject esi includes OR the contents",
   "main": "index.js",
   "scripts": {
