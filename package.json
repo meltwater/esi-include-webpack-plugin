@@ -1,7 +1,7 @@
 {
-  "name": "esi-include-webpack-plugin",
+  "name": "@meltwater/esi-include-webpack-plugin",
   "version": "1.0.0",
-  "description": "Webpack plugin to inject esi includes OR the contents ",
+  "description": "Webpack plugin to inject esi includes OR the contents",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -18,8 +18,8 @@
     "html",
     "inject"
   ],
-  "author": "Team Cosmos",
-  "license": "ISC",
+  "author": "Team Cosmos - Meltwater",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/meltwater/esi-include-webpack-plugin/issues"
   },
