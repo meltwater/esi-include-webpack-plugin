@@ -1,5 +1,5 @@
 # Webpack ESI Include Plugin
-[![Build Status](https://drone.meltwater.io/api/badges/dsappet/esi-include-webpack-plugin/status.svg)](https://drone.meltwater.io/dsappet/esi-include-webpack-plugin)
+[![Build Status](https://drone.meltwater.io/api/badges/meltwater/esi-include-webpack-plugin/status.svg)](https://drone.meltwater.io/meltwater/esi-include-webpack-plugin)
 ---------
 ## What is it?
 This is a webpack plugin that can be configured with settings for an ESI (edge side include) tag. When running or building as production this plugin will replace a comment tag in html files with the appropriately created esi tag. The real power of this plugin comes in when running in development mode. When in development this plugin will fetch the contents of the configured src and inject the entire source during build to emulate the esi. This allows developers to run locally with the same includes that (for meltwater) akamai provides, without actually needing to proxy local dev through akamai in any way. 

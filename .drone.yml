@@ -35,10 +35,10 @@ steps:
     <<: *node_img
     <<: *push_master_only
     commands:
-      - echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN_WRITE" > .npmrc
+      - echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN_PUBLISH" > .npmrc
       - npx semantic-release
     environment:
       GH_TOKEN:
         from_secret: gh_token
-      NPM_TOKEN_WRITE:
-        from_secret: npm_token_write
+      NPM_TOKEN_PUBLISH:
+        from_secret: npm_token_publish
