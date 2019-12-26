@@ -1,0 +1,44 @@
+kind: pipeline
+name: default
+
+# Here are a bunch of anchors for re-use in this pipeline (they exist only in the pipeline)
+node_img: &node_img
+  image: node:10.16.2
+browser_img: &browser_img
+  image: meltwaterfoundation/drone-node:10-browser
+push_master_only: &push_master_only
+  when:
+    event: [ push ]
+    branch: [ master ]
+#end anchors
+
+steps:
+  - name: install
+    <<: *node_img
+    commands:
+      - echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN_RO" > .npmrc
+      - npm ci
+    environment:
+      NPM_TOKEN_RO:
+        from_secret: npm_token_ro
+
+  - name: test
+    <<: *browser_img
+    commands:
+      - 'npm run test'
+    when:
+      event:
+        - push
+        - pull_request
+
+  - name: publish
+    <<: *node_img
+    <<: *push_master_only
+    commands:
+      - echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN_WRITE" > .npmrc
+      - npx semantic-release
+    environment:
+      GH_TOKEN:
+        from_secret: gh_token
+      NPM_TOKEN_WRITE:
+        from_secret: npm_token_write
