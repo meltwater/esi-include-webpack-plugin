@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/meltwater/esi-include-webpack-plugin/compare/v1.0.2...v1.0.3) (2019-12-27)
+
+
+### Bug Fixes
+
+* missing assign value and fixing license file ([2cd33d5](https://github.com/meltwater/esi-include-webpack-plugin/commit/2cd33d50a33c58b109e9bfe86ca2e3810836da10))
+
 ## [1.0.2](https://github.com/meltwater/esi-include-webpack-plugin/compare/v1.0.1...v1.0.2) (2019-12-26)
 
 
