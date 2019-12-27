@@ -110,7 +110,7 @@ class EsiIncludeWebpackPlugin {
 
     return {
       searchString: `<!--esi-include-webpack-plugin name=${esiItem.name}-->`,
-      replaceString: 
+      replaceString: tag
     };
   }
 
