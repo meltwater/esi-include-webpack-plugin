@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/meltwater/esi-include-webpack-plugin/compare/v1.0.3...v1.1.0) (2020-01-02)
+
+
+### Features
+
+* Changing the contract for noStore to be a direct string replacement defaulting to off, removing the boolean functionality, not backwards compatable ([40774c0](https://github.com/meltwater/esi-include-webpack-plugin/commit/40774c008af9cd0209970540266dc61a43f995da))
+
 ## [1.0.3](https://github.com/meltwater/esi-include-webpack-plugin/compare/v1.0.2...v1.0.3) (2019-12-27)
 
 
