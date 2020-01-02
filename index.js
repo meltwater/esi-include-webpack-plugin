@@ -93,13 +93,13 @@ class EsiIncludeWebpackPlugin {
 
   buildEsiString(esiItem) {
     if (!esiItem.noStore) {
-      esiItem.noStore = 'true';
+      esiItem.noStore = 'off';
     }
     if (!esiItem.onError) {
       esiItem.onError = 'continue';
     }
 
-    let tag = `<!--esi <esi:include src="${esiItem.src}" no-store="${esiItem.noStore ? 'on' : 'off'}" onerror="${esiItem.onError}"`;
+    let tag = `<!--esi <esi:include src="${esiItem.src}" no-store="${esiItem.noStore}" onerror="${esiItem.onError}"`;
     if(esiItem.ttl){
       tag += ` ttl:"${esiItem.ttl}"`;
     }

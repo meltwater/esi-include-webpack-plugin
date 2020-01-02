@@ -12,7 +12,7 @@ const EsiIncludeWebpackPlugin = require('@meltwater/esi-include-webpack-plugin')
 plugins: [
     new EsiIncludeWebpackPlugin({
         verbose: true,
-        esi: [{ name: 'placeholder', src: 'https://mydomain.com/thingToInclude.html', noStore: false, onError: 'continue', authorization: 'bearer tokendatablah' }]
+        esi: [{ name: 'placeholder', src: 'https://mydomain.com/thingToInclude.html', noStore: 'off', onError: 'continue', authorization: 'bearer tokendatablah' }]
     })
 ];
 ```
@@ -20,13 +20,13 @@ verbose: optional - set to true to see additional console logging.
 
 esi: array of esi objects
   esiObjects: 
-    name: matches comment in html so it knows where to replace
-    src: source file to 'GET' to include in esi
-    noStore: set to true or false to set the 'no-store' esi 
-    onError: the esi onerror value
-    ttl: optional property to set the ttl property on the esi:include tag
-    maxwait: optional property to set the maxwait property on the esi:include tag 
-    authorization: optional property to passed as the authorization header in the GET request when a file is fetched for dev.
+    name: (string) matches comment in html so it knows where to replace
+    src: (string) source file to 'GET' to include in esi
+    noStore: (string) set 'no-store' property on the esi tag. Defaults to "off" 
+    onError: (string) the esi onerror value. Defaults to "continue"
+    ttl: (string) optional property to set the ttl property on the esi:include tag
+    maxwait: (string) optional property to set the maxwait property on the esi:include tag 
+    authorization: (string) optional property to passed as the authorization header in the GET request when a file is fetched for dev.
 
 In HTML use the following snippet to mark the location of the ESI
 ```html 
