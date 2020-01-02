@@ -16,7 +16,7 @@ class EsiIncludeWebpackPlugin {
 
     // Just do a little type checking
     if (esi === undefined || esi === null || !Array.isArray(esi)) {
-      console.error(`${pluginName}: esi property must exist be an array.`);
+      console.error(`${pluginName}: esi property must exist and be an array.`);
     }
 
     // Some more type checking
