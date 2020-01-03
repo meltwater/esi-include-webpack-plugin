@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/meltwater/esi-include-webpack-plugin/compare/v1.1.0...v1.1.1) (2020-01-03)
+
+
+### Bug Fixes
+
+* fixing incorrect ttl attribute ([5877f0c](https://github.com/meltwater/esi-include-webpack-plugin/commit/5877f0cc6ba80e6bc248017ef50c48141d53bcb4))
+
 # [1.1.0](https://github.com/meltwater/esi-include-webpack-plugin/compare/v1.0.3...v1.1.0) (2020-01-02)
 
 
