@@ -101,7 +101,7 @@ class EsiIncludeWebpackPlugin {
 
     let tag = `<!--esi <esi:include src="${esiItem.src}" no-store="${esiItem.noStore}" onerror="${esiItem.onError}"`;
     if(esiItem.ttl){
-      tag += ` ttl:"${esiItem.ttl}"`;
+      tag += ` ttl="${esiItem.ttl}"`;
     }
     if(esiItem.maxwait) {
       tag += ` maxwait="${esiItem.maxwait}"`;
