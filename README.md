@@ -54,10 +54,9 @@ The following file extensions will be operated on:
 * ejs
 
 # Need an option or a feature? 
-This is an open source project, feel free to submit a PR! If you can't or don't want to, contact team cosmos and we can add it to our backlog. #team-cosmos on slack, or all.cosmos@meltwater.com 
+This is an open source project, feel free to submit a PR! If you can't or don't want to, create an issue in the github repo.
 
 # Contributing
-TODO still, for specific questions, contact cosmos (#team-cosmos on slack).
 * Work in a branch, submit a PR to master
 
 
