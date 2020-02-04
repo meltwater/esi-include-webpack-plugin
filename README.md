@@ -59,6 +59,8 @@ This is an open source project, feel free to submit a PR! If you can't or don't 
 # Contributing
 * Work in a branch, submit a PR to master
 
+## CI/CD
+This project is built and published automatically when a commit is made to master. Tests are run on commits to any branch and on PR creation. Drone is the CI tool being used and can be monitored at https://drone.meltwater.io/meltwater/esi-include-webpack-plugin
 
 # License
 ---------
