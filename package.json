@@ -24,7 +24,7 @@
     "render"
   ],
   "author": "Team Cosmos - Meltwater",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/meltwater/esi-include-webpack-plugin/issues"
   },
