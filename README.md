@@ -56,12 +56,32 @@ The following file extensions will be operated on:
 # Need an option or a feature? 
 This is an open source project, feel free to submit a PR! If you can't or don't want to, create an issue in the github repo.
 
+# Is it broken?
+Please create an issue if you are experiencing any unexpected behavior.
+
 # Contributing
-* Work in a branch, submit a PR to master
+
+## Where and how to make changes?
+All work shall be done in a branch and PR shall be made to master in this repository. PRs require review and approval by an owner of the project. Upon approval the code will be merged and CI will deploy.
+
+### Commit messages
+Commit messages shall be descriptive and follow the format of [semantic-release][semantic-release-1] as they are used to determine version number changes on publish.
+
+## Testing
+Tests are automatically run as part of the CI process when commits or PRs are created. All tests shall be passing before merging to master. Currently there is no testing written however it is a future intention to write some tests using jasmine. There is not currently a requirement for code coverage however it would be great if you wrote some tests.
 
 ## CI/CD
 This project is built and published automatically when a commit is made to master. Tests are run on commits to any branch and on PR creation. Drone is the CI tool being used and can be monitored at https://drone.meltwater.io/meltwater/esi-include-webpack-plugin
 
+## Versioning
+Semantic release is used to handle version number changes. Commit message must follow [semantic-release][semantic-release-1] format requirements.
+
+## Deploy / Publish
+This project is published to NPM automatically when a commit is made to the master branch.
+
 # License
----------
+
 Licensed under the MIT License.
+
+
+[semantic-release-1]: https://github.com/semantic-release/semantic-release
