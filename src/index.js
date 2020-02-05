@@ -99,7 +99,7 @@ class EsiIncludeWebpackPlugin {
       //    - Global replace (every instance not just the first)
       //    - Case insensitive replace. TODO: Make this a config option defaulted to true
       const re = new RegExp(replacer.searchString, 'gi');
-      newHtml = html.replace(re, replacer.replaceString);
+      newHtml = newHtml.replace(re, replacer.replaceString);
     });
     return newHtml;
   }

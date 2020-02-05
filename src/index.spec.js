@@ -47,7 +47,7 @@ describe('index', () => {
 
         replacers = [
           {
-            //searchString: `<!--esi-include-webpack-plugin name=${esiItem.name}-->`,
+            // searchString: `<!--esi-include-webpack-plugin name=${esiItem.name}-->`,
             searchString: 'MARCO',
             replaceString: 'POLO'
           },
@@ -64,11 +64,18 @@ describe('index', () => {
         });
         plugin.replacers = replacers;
         plugin.manipulateCompilationAssets(compilation);
+
         expect(compilation.assets['test.html'].source()).toEqual('This string has a key POLO and has a second one POLO and a third one LITTLE');
       });
 
       it('should only alter file extensions html, htm, ejs', () => {
+        const plugin = new EsiIncludeWebpackPlugin({
+          esi: [{ name: 'scooby', src: 'doo' }]
+        });
+        plugin.replacers = replacers;
+        plugin.manipulateCompilationAssets(compilation);
 
+        expect(compilation.assets['other.txt'].source()).toEqual('This file with MARCO should not be touched');
       });
     });
   });
