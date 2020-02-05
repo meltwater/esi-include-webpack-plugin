@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 const fetch = require('node-fetch');
 
 const pluginName = 'EsiIncludeWebpackPlugin';
@@ -60,7 +59,6 @@ class EsiIncludeWebpackPlugin {
 
     compiler.hooks.emit.tapAsync(pluginName, (compilation, callback) => {
       // Loop through all compiled assets,
-
       for (var filename in compilation.assets) {
         const bits = filename.split('.');
         if (
