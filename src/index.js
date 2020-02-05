@@ -58,34 +58,37 @@ class EsiIncludeWebpackPlugin {
     this.logVerbose(this.replacers);
 
     compiler.hooks.emit.tapAsync(pluginName, (compilation, callback) => {
-      // Loop through all compiled assets,
-      for (var filename in compilation.assets) {
-        const bits = filename.split('.');
-        if (
-          bits[bits.length - 1] === 'html' ||
-          bits[bits.length - 1] === 'htm' ||
-          bits[bits.length - 1] === 'ejs'
-        ) {
-          // this is an html file so do the replacement
-          this.logVerbose(filename);
-          this.logVerbose(compilation.assets[filename]);
-          const replacedHtml = this.replace(
-            compilation.assets[filename].source()
-          );
-          // eslint-disable-next-line no-param-reassign
-          compilation.assets[filename] = {
-            source() {
-              return replacedHtml;
-            },
-            size() {
-              return replacedHtml.length;
-            }
-          };
-        }
-      }
-
+      this.manipulateCompilationAssets(compilation);
       callback();
     });
+  }
+
+  manipulateCompilationAssets(compilation) {
+    // Loop through all compiled assets,
+    for (var filename in compilation.assets) {
+      const bits = filename.split('.');
+      if (
+        bits[bits.length - 1] === 'html' ||
+        bits[bits.length - 1] === 'htm' ||
+        bits[bits.length - 1] === 'ejs'
+      ) {
+        // this is an html file so do the replacement
+        this.logVerbose(filename);
+        this.logVerbose(compilation.assets[filename]);
+        const replacedHtml = this.replace(
+          compilation.assets[filename].source()
+        );
+        // eslint-disable-next-line no-param-reassign
+        compilation.assets[filename] = {
+          source() {
+            return replacedHtml;
+          },
+          size() {
+            return replacedHtml.length;
+          }
+        };
+      }
+    }
   }
 
   replace(html) {
