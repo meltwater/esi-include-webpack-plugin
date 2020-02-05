@@ -4,7 +4,8 @@
   "description": "Webpack plugin to inject esi includes OR the contents",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 0"
+    "test": "jasmine --config=./spec/jasmine.json",
+    "test:watch": "nodemon --exec 'jasmine --config=./spec/jasmine.json' --config ./spec/nodemon.json"
   },
   "repository": {
     "type": "git",
@@ -65,6 +66,9 @@
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-prettier": "^3.1.2",
+    "jasmine": "^3.5.0",
+    "jasmine-spec-reporter": "^4.2.1",
+    "nodemon": "^2.0.2",
     "prettier": "^1.19.1",
     "semantic-release": "^15.13.31"
   }

@@ -74,7 +74,7 @@ This project follows the [airbnb/javascript](https://github.com/airbnb/javascrip
 Eslint, airbnb-base, and prettier are all configured to work together in this project. If you are using VS Code install the eslint and prettier plugins and make sure to npm install. This will provide style guide suggestions and error reporting within your ide. 
 
 ## Testing
-Tests are automatically run as part of the CI process when commits or PRs are created. All tests shall be passing before merging to master. Currently there is no testing written however it is a future intention to write some tests using jasmine. There is not currently a requirement for code coverage however it would be great if you wrote some tests.
+Tests are automatically run as part of the CI process when commits or PRs are created. All tests shall be passing before merging to master. Currently [jasmine](https://jasmine.github.io/index.html) is used for testing. While 100% code coverage is not required please write tests that cover any new code especially special conditions or edge cases. To have tests continually run as you develop use the test:watch script that utilizes nodemon to watch files via `npm run test:watch`.
 
 ## CI/CD
 This project is built and published automatically when a commit is made to master. Tests are run on commits to any branch and on PR creation. Drone is the CI tool being used and can be monitored at https://drone.meltwater.io/meltwater/esi-include-webpack-plugin
