@@ -68,7 +68,10 @@ All work shall be done in a branch and PR shall be made to master in this reposi
 Commit messages shall be descriptive and follow the format of [semantic-release][semantic-release-1] as they are used to determine version number changes on publish.
 
 ## Style Guide
-This project adheres to the [airbnb/javascript](https://github.com/airbnb/javascript) style guide. Please adhere to this when making any contributions.
+This project follows the [airbnb/javascript](https://github.com/airbnb/javascript) style guide. Please adhere to this when making any contributions. 
+
+### Style Tooling
+Eslint, airbnb-base, and prettier are all configured to work together in this project. If you are using VS Code install the eslint and prettier plugins and make sure to npm install. This will provide style guide suggestions and error reporting within your ide. 
 
 ## Testing
 Tests are automatically run as part of the CI process when commits or PRs are created. All tests shall be passing before merging to master. Currently there is no testing written however it is a future intention to write some tests using jasmine. There is not currently a requirement for code coverage however it would be great if you wrote some tests.
