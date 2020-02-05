@@ -75,6 +75,7 @@ class EsiIncludeWebpackPlugin {
         // this is an html file so do the replacement
         this.logVerbose(filename);
         this.logVerbose(compilation.assets[filename]);
+
         const replacedHtml = this.replace(
           compilation.assets[filename].source()
         );
@@ -94,7 +95,11 @@ class EsiIncludeWebpackPlugin {
   replace(html) {
     let newHtml = html;
     this.replacers.forEach(replacer => {
-      newHtml = html.replace(replacer.searchString, replacer.replaceString);
+      // Convert search string to regex to do:
+      //    - Global replace (every instance not just the first)
+      //    - Case insensitive replace. TODO: Make this a config option defaulted to true
+      const re = new RegExp(replacer.searchString, 'gi');
+      newHtml = html.replace(re, replacer.replaceString);
     });
     return newHtml;
   }
