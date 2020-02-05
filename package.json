@@ -2,7 +2,7 @@
   "name": "@meltwater/esi-include-webpack-plugin",
   "version": "1.1.1",
   "description": "Webpack plugin to inject esi includes OR the contents",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 0"
   },
