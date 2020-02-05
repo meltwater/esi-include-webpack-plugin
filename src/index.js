@@ -64,23 +64,24 @@ class EsiIncludeWebpackPlugin {
   }
 
   manipulateCompilationAssets(compilation) {
-    // Loop through all compiled assets,
-    for (var filename in compilation.assets) {
-      const bits = filename.split('.');
+    // Loop through all compiled assets
+    const assetKeys = Object.keys(compilation.assets);
+    assetKeys.forEach(_assetKey => {
+      const bits = _assetKey.split('.');
       if (
         bits[bits.length - 1] === 'html' ||
         bits[bits.length - 1] === 'htm' ||
         bits[bits.length - 1] === 'ejs'
       ) {
         // this is an html file so do the replacement
-        this.logVerbose(filename);
-        this.logVerbose(compilation.assets[filename]);
+        this.logVerbose(_assetKey);
+        this.logVerbose(compilation.assets[_assetKey]);
 
         const replacedHtml = this.replace(
-          compilation.assets[filename].source()
+          compilation.assets[_assetKey].source()
         );
         // eslint-disable-next-line no-param-reassign
-        compilation.assets[filename] = {
+        compilation.assets[_assetKey] = {
           source() {
             return replacedHtml;
           },
@@ -89,7 +90,7 @@ class EsiIncludeWebpackPlugin {
           }
         };
       }
-    }
+    });
   }
 
   replace(html) {
