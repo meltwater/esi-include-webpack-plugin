@@ -65,6 +65,7 @@
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-jasmine": "^4.1.0",
     "eslint-plugin-prettier": "^3.1.2",
     "jasmine": "^3.5.0",
     "jasmine-spec-reporter": "^4.2.1",
