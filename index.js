@@ -1,18 +1,20 @@
+/* eslint-disable no-console */
 const fetch = require('node-fetch');
-
 
 const pluginName = 'EsiIncludeWebpackPlugin';
 
-
 class EsiIncludeWebpackPlugin {
-
   constructor(options) {
     this.options = options;
     this.replacers = [];
 
     const { esi } = options;
 
-    this.options.verbose = (options.verbose === true) ? true : false;
+    if (typeof options.verbose !== 'boolean') {
+      this.options.verbose = false;
+    } else {
+      this.options.verbose = options.verbose;
+    }
 
     // Just do a little type checking
     if (esi === undefined || esi === null || !Array.isArray(esi)) {
@@ -25,29 +27,31 @@ class EsiIncludeWebpackPlugin {
         console.error(`esi config item requires a name and src tag!`);
       }
     });
-
   }
 
   logVerbose(msg) {
-    if(this.options.verbose) {
+    if (this.options.verbose) {
       console.info(msg);
     }
   }
 
   async apply(compiler) {
-
-    const isProductionMode = compiler.options.mode === 'production' || !compiler.options.mode;
-    
-    this.logVerbose(`${pluginName} detected production mode as ${isProductionMode}`);
+    const isProductionMode =
+      compiler.options.mode === 'production' || !compiler.options.mode;
+    this.logVerbose(
+      `${pluginName} detected production mode as ${isProductionMode}`
+    );
 
     this.replacers = [];
-    const promises = this.options.esi.map(async (esiItem) => {
+    const promises = this.options.esi.map(async esiItem => {
       if (isProductionMode) {
         this.replacers.push(this.buildEsiString(esiItem));
       } else {
         this.replacers.push(await this.buildFullFileInclude(esiItem));
       }
-      return new Promise((result, reject) => { result() });
+      return new Promise(result => {
+        result();
+      });
     });
 
     await Promise.all(promises);
@@ -55,43 +59,47 @@ class EsiIncludeWebpackPlugin {
     this.logVerbose(this.replacers);
 
     compiler.hooks.emit.tapAsync(pluginName, (compilation, callback) => {
-
       // Loop through all compiled assets,
+
       for (var filename in compilation.assets) {
-        let bits = filename.split('.');
-        if (bits[bits.length - 1] === 'html' || bits[bits.length - 1] === 'htm' || bits[bits.length - 1] === 'ejs') {
+        const bits = filename.split('.');
+        if (
+          bits[bits.length - 1] === 'html' ||
+          bits[bits.length - 1] === 'htm' ||
+          bits[bits.length - 1] === 'ejs'
+        ) {
           // this is an html file so do the replacement
           this.logVerbose(filename);
           this.logVerbose(compilation.assets[filename]);
-
-          let replacedHtml = this.replace(compilation.assets[filename].source());
-
+          const replacedHtml = this.replace(
+            compilation.assets[filename].source()
+          );
+          // eslint-disable-next-line no-param-reassign
           compilation.assets[filename] = {
-            source: function () {
+            source() {
               return replacedHtml;
             },
-            size: function () {
+            size() {
               return replacedHtml.length;
             }
-          }
+          };
         }
       }
 
       callback();
     });
-
   }
 
   replace(html) {
+    let newHtml = html;
     this.replacers.forEach(replacer => {
-      html = html.replace(replacer.searchString, replacer.replaceString);
+      newHtml = html.replace(replacer.searchString, replacer.replaceString);
     });
-    return html;
+    return newHtml;
   }
 
-
-
-  buildEsiString(esiItem) {
+  static buildEsiString(esiItemParam) {
+    const esiItem = esiItemParam;
     if (!esiItem.noStore) {
       esiItem.noStore = 'off';
     }
@@ -100,10 +108,10 @@ class EsiIncludeWebpackPlugin {
     }
 
     let tag = `<!--esi <esi:include src="${esiItem.src}" no-store="${esiItem.noStore}" onerror="${esiItem.onError}"`;
-    if(esiItem.ttl){
+    if (esiItem.ttl) {
       tag += ` ttl="${esiItem.ttl}"`;
     }
-    if(esiItem.maxwait) {
+    if (esiItem.maxwait) {
       tag += ` maxwait="${esiItem.maxwait}"`;
     }
     tag += `></esi:include>-->`;
@@ -115,7 +123,7 @@ class EsiIncludeWebpackPlugin {
   }
 
   async buildFullFileInclude(esiItem) {
-    let include = await this.fetchInclude(esiItem.src, esiItem.authorization);
+    const include = await this.fetchInclude(esiItem.src, esiItem.authorization);
     return {
       searchString: `<!--esi-include-webpack-plugin name=${esiItem.name}-->`,
       replaceString: include
@@ -123,22 +131,22 @@ class EsiIncludeWebpackPlugin {
   }
 
   async fetchInclude(uri, authorization) {
-    let options = {};
+    const options = {};
     if (authorization) {
-      options.headers = { 'authorization': authorization }
+      options.headers = { authorization };
     }
-    let res = await fetch(uri, options);
-    let text = await res.text();
-    this.logVerbose(`${res.status} - ${uri} - ${text}`)
+    const res = await fetch(uri, options);
+    const text = await res.text();
+    this.logVerbose(`${res.status} - ${uri} - ${text}`);
 
     if (res.status !== 200) {
-      console.error(`${pluginName} errored attempting to fetch ${uri}, returned with code ${res.status}`);
+      console.error(
+        `${pluginName} errored attempting to fetch ${uri}, returned with code ${res.status}`
+      );
     }
 
     return text;
-
   }
-
 }
 
 module.exports = EsiIncludeWebpackPlugin;
