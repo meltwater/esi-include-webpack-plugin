@@ -54,13 +54,40 @@ The following file extensions will be operated on:
 * ejs
 
 # Need an option or a feature? 
-This is an open source project, feel free to submit a PR! If you can't or don't want to, contact team cosmos and we can add it to our backlog. #team-cosmos on slack, or all.cosmos@meltwater.com 
+This is an open source project, feel free to submit a PR! If you can't or don't want to, create an issue in the github repo.
+
+# Is it broken?
+Please create an issue if you are experiencing any unexpected behavior.
 
 # Contributing
-TODO still, for specific questions, contact cosmos (#team-cosmos on slack).
-* Work in a branch, submit a PR to master
 
+## Where and how to make changes?
+All work shall be done in a branch and PR shall be made to master in this repository. PRs require review and approval by an owner of the project. Upon approval the code will be merged and CI will create a new npm package version.
+
+## Commit messages
+Commit messages shall be descriptive and follow the format of [semantic-release][semantic-release-1] as they are used to determine version number changes on publish.
+
+## Style Guide
+This project follows the [airbnb/javascript](https://github.com/airbnb/javascript) style guide. Please adhere to this when making any contributions. 
+
+### Style Tooling
+Eslint, airbnb-base, and prettier are all configured to work together in this project. If you are using VS Code install the eslint and prettier plugins and make sure to npm install. This will provide style guide suggestions and error reporting within your ide. 
+
+## Testing
+Tests are automatically run as part of the CI process when commits or PRs are created. All tests shall be passing before merging to master. Currently [jasmine](https://jasmine.github.io/index.html) is used for testing. While 100% code coverage is not required please write tests that cover any new code especially special conditions or edge cases. To have tests continually run as you develop use the test:watch script that utilizes nodemon to watch files via `npm run test:watch`.
+
+## CI/CD
+This project is built and published automatically when a commit is made to master. Tests are run on commits to any branch and on PR creation. Drone is the CI tool being used and can be monitored at https://drone.meltwater.io/meltwater/esi-include-webpack-plugin
+
+## Versioning
+Semantic release is used to handle version number changes. Commit message must follow [semantic-release][semantic-release-1] format requirements.
+
+## Deploy / Publish
+This project is published to NPM automatically when a commit is made to the master branch.
 
 # License
----------
+
 Licensed under the MIT License.
+
+
+[semantic-release-1]: https://github.com/semantic-release/semantic-release

@@ -2,9 +2,10 @@
   "name": "@meltwater/esi-include-webpack-plugin",
   "version": "1.1.1",
   "description": "Webpack plugin to inject esi includes OR the contents",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 0"
+    "test": "jasmine --config=./spec/jasmine.json",
+    "test:watch": "nodemon --exec 'jasmine --config=./spec/jasmine.json' --config ./spec/nodemon.json"
   },
   "repository": {
     "type": "git",
@@ -24,7 +25,7 @@
     "render"
   ],
   "author": "Team Cosmos - Meltwater",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/meltwater/esi-include-webpack-plugin/issues"
   },
@@ -60,6 +61,16 @@
     "@semantic-release/github": "^5.5.5",
     "@semantic-release/npm": "^5.3.4",
     "@semantic-release/release-notes-generator": "^7.3.5",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-jasmine": "^4.1.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "jasmine": "^3.5.0",
+    "jasmine-spec-reporter": "^4.2.1",
+    "nodemon": "^2.0.2",
+    "prettier": "^1.19.1",
     "semantic-release": "^15.13.31"
   }
 }
