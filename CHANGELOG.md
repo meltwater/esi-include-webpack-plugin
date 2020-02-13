@@ -1,3 +1,12 @@
+## [1.1.2](https://github.com/meltwater/esi-include-webpack-plugin/compare/v1.1.1...v1.1.2) (2020-02-13)
+
+
+### Bug Fixes
+
+* Replace all instances of a string instead of just first and do it case-insensitive ([0410a6b](https://github.com/meltwater/esi-include-webpack-plugin/commit/0410a6bbc831a7306d3f614e9f95fddf7c178fa8))
+* Unit tests for replacer functionality ([f8a6daf](https://github.com/meltwater/esi-include-webpack-plugin/commit/f8a6dafdc06dbb5636ad80b34843c92a982ac727))
+* Updating for in loop to iterate over keys per linting ([2b12a3b](https://github.com/meltwater/esi-include-webpack-plugin/commit/2b12a3bc2d22f3172e0835df6f188e5ad368366f))
+
 ## [1.1.1](https://github.com/meltwater/esi-include-webpack-plugin/compare/v1.1.0...v1.1.1) (2020-01-03)
 
 
