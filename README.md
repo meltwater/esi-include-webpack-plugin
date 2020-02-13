@@ -62,7 +62,7 @@ Please create an issue if you are experiencing any unexpected behavior.
 # Contributing
 
 ## Where and how to make changes?
-All work shall be done in a branch and PR shall be made to master in this repository. PRs require review and approval by an owner of the project. Upon approval the code will be merged and CI will deploy.
+All work shall be done in a branch and PR shall be made to master in this repository. PRs require review and approval by an owner of the project. Upon approval the code will be merged and CI will create a new npm package version.
 
 ## Commit messages
 Commit messages shall be descriptive and follow the format of [semantic-release][semantic-release-1] as they are used to determine version number changes on publish.
