@@ -34,32 +34,31 @@ class EsiIncludeWebpackPlugin {
     }
   }
 
-  async apply(compiler) {
+  apply(compiler) {
     const isProductionMode =
       compiler.options.mode === 'production' || !compiler.options.mode;
     this.logVerbose(
       `${pluginName} detected production mode as ${isProductionMode}`
     );
 
-    this.replacers = [];
-    const promises = this.options.esi.map(async esiItem => {
-      if (isProductionMode) {
-        this.replacers.push(this.buildEsiString(esiItem));
-      } else {
-        this.replacers.push(await this.buildFullFileInclude(esiItem));
-      }
-      return new Promise(result => {
-        result();
+    compiler.hooks.emit.tapPromise(pluginName, async compilation => {
+      this.replacers = [];
+      const promises = this.options.esi.map(async esiItem => {
+        if (isProductionMode) {
+          this.replacers.push(this.buildEsiString(esiItem));
+        } else {
+          const content = await this.buildFullFileInclude(esiItem);
+          this.replacers.push(content);
+        }
+        return new Promise(result => {
+          result();
+        });
       });
-    });
 
-    await Promise.all(promises);
+      await Promise.all(promises);
 
-    this.logVerbose(this.replacers);
-
-    compiler.hooks.emit.tapAsync(pluginName, (compilation, callback) => {
+      this.logVerbose(this.replacers);
       this.manipulateCompilationAssets(compilation);
-      callback();
     });
   }
 
