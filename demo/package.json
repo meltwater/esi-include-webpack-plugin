@@ -1,0 +1,17 @@
+{
+  "name": "demo",
+  "description": "demo for esi-include-webpack-plugin",
+  "version": "1.0.0",
+  "scripts": {
+    "build-example-1": "rm -rf dist && webpack --config webpack.config.example1.js --mode=development",
+    "build-example-2": "rm -rf dist && webpack --config webpack.config.example2.js --mode=development",
+    "build-example-3": "rm -rf dist && webpack --config webpack.config.example3.js --mode=development",
+    "build-example-4": "rm -rf dist && webpack --config webpack.config.example4.js --mode=development"
+  },
+  "devDependencies": {
+    "@meltwater/esi-include-webpack-plugin": "^1.1.2",
+    "html-webpack-plugin": "^4.0.3",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11"
+  }
+}
