@@ -1,3 +1,10 @@
+## [1.1.3](https://github.com/meltwater/esi-include-webpack-plugin/compare/v1.1.2...v1.1.3) (2020-04-01)
+
+
+### Bug Fixes
+
+* Fixing a major bug with async apply function ([0790af1](https://github.com/meltwater/esi-include-webpack-plugin/commit/0790af1696ffc8713cbe72bb42fe8fd11ee355e3))
+
 ## [1.1.2](https://github.com/meltwater/esi-include-webpack-plugin/compare/v1.1.1...v1.1.2) (2020-02-13)
 
 
