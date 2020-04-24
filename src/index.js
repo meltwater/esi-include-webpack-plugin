@@ -45,7 +45,7 @@ class EsiIncludeWebpackPlugin {
       this.replacers = [];
       const promises = this.options.esi.map(async esiItem => {
         if (isProductionMode) {
-          this.replacers.push(this.buildEsiString(esiItem));
+          this.replacers.push(EsiIncludeWebpackPlugin.buildEsiString(esiItem));
         } else {
           const content = await this.buildFullFileInclude(esiItem);
           this.replacers.push(content);
