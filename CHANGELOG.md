@@ -1,3 +1,10 @@
+## [1.1.4](https://github.com/meltwater/esi-include-webpack-plugin/compare/v1.1.3...v1.1.4) (2020-04-27)
+
+
+### Bug Fixes
+
+* Call static method with class ([a003f4c](https://github.com/meltwater/esi-include-webpack-plugin/commit/a003f4c733ab01a7189c716db383b254ff3a63dd))
+
 ## [1.1.3](https://github.com/meltwater/esi-include-webpack-plugin/compare/v1.1.2...v1.1.3) (2020-04-01)
 
 
