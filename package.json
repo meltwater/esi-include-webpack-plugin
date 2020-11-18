@@ -71,6 +71,6 @@
     "jasmine-spec-reporter": "^4.2.1",
     "nodemon": "^2.0.2",
     "prettier": "^1.19.1",
-    "semantic-release": "^15.13.31"
+    "semantic-release": "^17.2.3"
   }
 }
